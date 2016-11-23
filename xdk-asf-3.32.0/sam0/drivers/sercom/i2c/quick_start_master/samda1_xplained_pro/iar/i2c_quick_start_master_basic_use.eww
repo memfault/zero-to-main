@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\i2c_quick_start_master_basic_use_flash.ewp</path>
+	</project>
+</workspace>

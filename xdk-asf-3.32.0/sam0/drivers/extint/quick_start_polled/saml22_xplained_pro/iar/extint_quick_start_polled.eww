@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\extint_quick_start_polled_flash.ewp</path>
+	</project>
+</workspace>

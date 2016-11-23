@@ -1,0 +1,9 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\mxt143e_xplained_paint_demo_flash.ewp</path>
+	</project>
+	<project>
+		<path>$WS_DIR$\mxt143e_xplained_paint_demo_sram.ewp</path>
+	</project>
+</workspace>

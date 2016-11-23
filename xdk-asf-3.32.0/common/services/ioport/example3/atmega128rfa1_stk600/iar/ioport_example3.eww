@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\ioport_example3.ewp</path>
+	</project>
+</workspace>

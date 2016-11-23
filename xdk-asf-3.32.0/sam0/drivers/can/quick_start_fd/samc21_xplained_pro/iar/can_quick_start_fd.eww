@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\can_quick_start_fd_flash.ewp</path>
+	</project>
+</workspace>

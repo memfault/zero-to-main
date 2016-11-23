@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\mxt143e_xplained_multi-touch_demo.ewp</path>
+	</project>
+</workspace>

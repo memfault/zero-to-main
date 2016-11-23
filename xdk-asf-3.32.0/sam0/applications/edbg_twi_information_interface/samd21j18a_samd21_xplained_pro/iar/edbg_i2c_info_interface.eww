@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\edbg_i2c_info_interface_flash.ewp</path>
+	</project>
+</workspace>

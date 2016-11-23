@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\rtc_quick_start_count_interrupt_flash.ewp</path>
+	</project>
+</workspace>

@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\low_power_saml22_low_power_flash.ewp</path>
+	</project>
+</workspace>

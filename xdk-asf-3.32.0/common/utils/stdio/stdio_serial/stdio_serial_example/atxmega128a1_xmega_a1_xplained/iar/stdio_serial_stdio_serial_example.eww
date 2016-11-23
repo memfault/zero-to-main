@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\stdio_serial_stdio_serial_example.ewp</path>
+	</project>
+</workspace>

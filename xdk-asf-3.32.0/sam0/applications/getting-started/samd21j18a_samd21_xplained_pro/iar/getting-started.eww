@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\getting-started_flash.ewp</path>
+	</project>
+</workspace>

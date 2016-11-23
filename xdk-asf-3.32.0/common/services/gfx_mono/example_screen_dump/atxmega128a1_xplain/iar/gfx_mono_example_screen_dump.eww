@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\gfx_mono_example_screen_dump.ewp</path>
+	</project>
+</workspace>

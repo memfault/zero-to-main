@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\slcd_quick_start_b_flash.ewp</path>
+	</project>
+</workspace>

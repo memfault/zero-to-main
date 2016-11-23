@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\i2c_quick_start_i2c_master_dma_flash.ewp</path>
+	</project>
+</workspace>

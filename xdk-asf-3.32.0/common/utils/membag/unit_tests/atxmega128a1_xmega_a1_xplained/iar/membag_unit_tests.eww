@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\membag_unit_tests.ewp</path>
+	</project>
+</workspace>

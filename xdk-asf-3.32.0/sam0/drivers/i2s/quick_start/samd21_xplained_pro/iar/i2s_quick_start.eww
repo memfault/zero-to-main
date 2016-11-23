@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\i2s_quick_start_flash.ewp</path>
+	</project>
+</workspace>

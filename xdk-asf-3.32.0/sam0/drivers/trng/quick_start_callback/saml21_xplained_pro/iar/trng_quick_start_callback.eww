@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\trng_quick_start_callback_flash.ewp</path>
+	</project>
+</workspace>

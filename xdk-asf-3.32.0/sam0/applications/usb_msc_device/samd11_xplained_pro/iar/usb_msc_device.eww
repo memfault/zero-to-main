@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\usb_msc_device_flash.ewp</path>
+	</project>
+</workspace>

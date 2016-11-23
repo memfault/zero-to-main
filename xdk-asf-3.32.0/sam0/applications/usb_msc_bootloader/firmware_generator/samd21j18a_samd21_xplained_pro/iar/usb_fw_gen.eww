@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\usb_fw_gen_flash.ewp</path>
+	</project>
+</workspace>

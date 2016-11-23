@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\ioport_example3_flash.ewp</path>
+	</project>
+</workspace>

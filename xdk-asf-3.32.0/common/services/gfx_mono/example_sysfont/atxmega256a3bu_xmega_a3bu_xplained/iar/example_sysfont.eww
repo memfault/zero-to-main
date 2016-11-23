@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\example_sysfont.ewp</path>
+	</project>
+</workspace>

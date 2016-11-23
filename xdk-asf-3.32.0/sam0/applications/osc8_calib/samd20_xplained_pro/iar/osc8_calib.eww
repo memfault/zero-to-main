@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\osc8_calib_flash.ewp</path>
+	</project>
+</workspace>

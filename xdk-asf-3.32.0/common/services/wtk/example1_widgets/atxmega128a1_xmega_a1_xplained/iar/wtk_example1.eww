@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\wtk_example1.ewp</path>
+	</project>
+</workspace>

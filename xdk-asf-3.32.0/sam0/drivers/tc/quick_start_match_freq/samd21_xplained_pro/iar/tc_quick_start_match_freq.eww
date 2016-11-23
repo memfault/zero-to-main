@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\tc_quick_start_match_freq_flash.ewp</path>
+	</project>
+</workspace>

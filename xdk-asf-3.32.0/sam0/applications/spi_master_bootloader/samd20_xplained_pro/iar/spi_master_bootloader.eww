@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\spi_master_bootloader_flash.ewp</path>
+	</project>
+</workspace>

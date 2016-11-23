@@ -1,0 +1,9 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\example_sysfont_flash.ewp</path>
+	</project>
+	<project>
+		<path>$WS_DIR$\example_sysfont_sram.ewp</path>
+	</project>
+</workspace>

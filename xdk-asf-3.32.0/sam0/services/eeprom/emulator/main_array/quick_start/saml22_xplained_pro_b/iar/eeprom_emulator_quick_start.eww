@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\eeprom_emulator_quick_start_flash.ewp</path>
+	</project>
+</workspace>

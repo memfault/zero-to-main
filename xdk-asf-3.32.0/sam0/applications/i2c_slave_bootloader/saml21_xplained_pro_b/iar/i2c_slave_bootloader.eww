@@ -1,0 +1,6 @@
+<workspace>
+	<batchBuild></batchBuild>
+	<project>
+		<path>$WS_DIR$\i2c_slave_bootloader_flash.ewp</path>
+	</project>
+</workspace>
