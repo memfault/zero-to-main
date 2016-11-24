@@ -46,6 +46,7 @@ CFLAGS = \
 	-std=c11 \
 	-O0 \
 	-g \
+	-ffreestanding \
 	-ffunction-sections \
 	-fdata-sections
 
@@ -61,3 +62,20 @@ DEFINES = \
 CFLAGS += $(foreach i,$(INCLUDES),-I$(i))
 CFLAGS += $(foreach d,$(DEFINES),-D$(d))
 
+.PHONY: all
+all: $(BUILD_DIR)/$(PROJECT).bin
+
+$(BUILD_DIR)/$(PROJECT).bin: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).lst
+	$(OCPY) $< $@ -O binary
+
+$(BUILD_DIR)/$(PROJECT).lst: $(BUILD_DIR)/$(PROJECT).elf
+	$(ODUMP) -D $^ > $@
+
+$(BUILD_DIR)/$(PROJECT).elf: $(SRCS)
+	$(MKDIR) -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+
+
+.PHONY: clean
+clean:
+	rm -rf $(BUILD_DIR)
