@@ -15,11 +15,12 @@ SECTIONS
     .text :
     {
         . = ALIGN(4);
-        _sfixed = .;
+        _stext = .;
         KEEP(*(.vectors .vectors.*))
         *(.text .text.*)
         *(.rodata .rodata*)
         . = ALIGN(4);
+        _etext = .;
     } > rom
 
     /* .bss section which is used for uninitialized data */
@@ -31,6 +32,15 @@ SECTIONS
         *(COMMON)
         . = ALIGN(4);
         _ebss = . ;
+    } > ram
+
+    .data : AT (_etext)
+    {
+        . = ALIGN(4);
+        _sdata = .;
+        *(.data .data.*);
+        . = ALIGN(4);
+        _edata = .;
     } > ram
 
     /* stack section */

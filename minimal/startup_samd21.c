@@ -1,9 +1,12 @@
 #include "samd21.h"
 
 /* Initialize segments */
-extern uint32_t _sfixed;
+extern uint32_t _stext;
+extern uint32_t _etext;
 extern uint32_t _sbss;
 extern uint32_t _ebss;
+extern uint32_t _sdata;
+extern uint32_t _edata;
 extern uint32_t _sstack;
 extern uint32_t _estack;
 
@@ -179,7 +182,15 @@ const DeviceVectors exception_table = {
  */
 void Reset_Handler(void)
 {
-        uint32_t *pSrc, *pDest;
+        /* Initialize the data segment */
+        uint32_t *pSrc = &_etext;
+        uint32_t *pDest = &_sdata;
+
+        if (pSrc != pDest) {
+                for (; pDest < &_edata;) {
+                        *pDest++ = *pSrc++;
+                }
+        }
 
         /* Clear the zero segment */
         for (pDest = &_sbss; pDest < &_ebss;) {
@@ -187,7 +198,7 @@ void Reset_Handler(void)
         }
 
         /* Set the vector table base address */
-        pSrc = (uint32_t *) & _sfixed;
+        pSrc = (uint32_t *) & _stext;
         SCB->VTOR = ((uint32_t) pSrc & SCB_VTOR_TBLOFF_Msk);
 
         /* Change default QOS values to have the best performance */
