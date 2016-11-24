@@ -1,7 +1,6 @@
 #include <samd21g18a.h>
 
 #include <port.h>
-#include <delay.h>
 
 #define LED_0_PIN PIN_PA17
 
@@ -13,17 +12,11 @@ static void set_output(const uint8_t pin) {
   port_pin_set_output_level(pin, false);
 }
 
-static void setup() {
-  system_clock_init();
-  delay_init();
-  set_output(LED_0_PIN);
-}
-
 int main() {
-  setup();
+  set_output(LED_0_PIN);
   while (true) {
     port_pin_toggle_output_level(LED_0_PIN);
-    delay_s(2);
+    for (int i = 0; i < 100000; ++i) {}
   }
 }
 
