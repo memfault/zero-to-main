@@ -1,12 +1,11 @@
-PROJECT := default
+PROJECT := minimal
 BUILD_DIR ?= build
 
 include ../common.mk
 
 SRCS += \
-	$(ASF_PATH)/sam0/utils/cmsis/samd21/source/gcc/startup_samd21.c \
+	startup_samd21.c \
 	$(PROJECT).c
-
 
 .PHONY: all
 all: $(BUILD_DIR)/$(PROJECT).bin

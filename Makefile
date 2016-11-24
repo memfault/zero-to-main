@@ -1,4 +1,5 @@
 PROJECTS := \
+		minimal \
 		default
 
 RM := rm

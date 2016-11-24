@@ -1,13 +1,12 @@
 ASF_PATH = ../xdk-asf-3.32.0
 
-SRC += \
+SRCS = \
 	$(ASF_PATH)/common/utils/interrupt/interrupt_sam_nvic.c \
 	$(ASF_PATH)/common2/services/delay/sam0/cycle_counter.c \
 	$(ASF_PATH)/sam0/drivers/port/port.c \
 	$(ASF_PATH)/sam0/drivers/system/clock/clock_samd21_r21_da/clock.c \
 	$(ASF_PATH)/sam0/drivers/system/clock/clock_samd21_r21_da/gclk.c \
 	$(ASF_PATH)/sam0/drivers/system/pinmux/pinmux.c \
-	$(ASF_PATH)/sam0/utils/cmsis/samd21/source/gcc/startup_samd21.c \
 	$(ASF_PATH)/sam0/utils/cmsis/samd21/source/system_samd21.c
 
 INCLUDES = \
