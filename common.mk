@@ -1,6 +1,6 @@
 ASF_PATH = ../xdk-asf-3.32.0
 
-SRCS = \
+SRCS += \
 	$(ASF_PATH)/common/utils/interrupt/interrupt_sam_nvic.c \
 	$(ASF_PATH)/common2/services/delay/sam0/cycle_counter.c \
 	$(ASF_PATH)/sam0/drivers/port/port.c \
@@ -9,7 +9,7 @@ SRCS = \
 	$(ASF_PATH)/sam0/drivers/system/pinmux/pinmux.c \
 	$(ASF_PATH)/sam0/utils/cmsis/samd21/source/system_samd21.c
 
-INCLUDES = \
+INCLUDES += \
 	$(ASF_PATH)/common/utils \
 	$(ASF_PATH)/common2/services/delay \
 	$(ASF_PATH)/common2/services/delay/sam0 \
@@ -38,7 +38,7 @@ ODUMP=arm-none-eabi-objdump
 OCD=arduino-openocd
 MKDIR=mkdir
 
-CFLAGS = \
+CFLAGS += \
 	-mcpu=cortex-m0plus \
 	-mthumb \
 	-Wall \
@@ -50,12 +50,12 @@ CFLAGS = \
 	-ffunction-sections \
 	-fdata-sections
 
-LDFLAGS = \
+LDFLAGS += \
 	-Wl,--gc-sections \
 	-Wl,-Map=$(BUILD_DIR)/$(PROJECT).map \
 	-T samd21g18a_flash.ld
 
-DEFINES = \
+DEFINES += \
 	__SAMD21G18A__ \
 	CYCLE_MODE
 

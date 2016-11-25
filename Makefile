@@ -1,4 +1,5 @@
 PROJECTS := \
+		with-libc \
 		minimal \
 		default
 
