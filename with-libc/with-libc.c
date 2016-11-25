@@ -60,9 +60,9 @@ int _getpid(void) {
 }
 
 int _write (int file, char * ptr, int len) {
-  int nChars = 0;
+  int written = 0;
 
-  if ((file != 1) && (file != 2) && (file!=3)) {
+  if ((file != 1) && (file != 2) && (file != 3)) {
     return -1;
   }
 
@@ -70,24 +70,23 @@ int _write (int file, char * ptr, int len) {
     if (usart_serial_putchar(&stdio_uart_module, (uint8_t)*ptr++)) {
       return -1;
     }
-    ++nChars;
+    ++written;
   }
-  return nChars;
+  return written;
 }
 
 int _read (int file, char * ptr, int len) {
-  int nChars = 0;
+  int read = 0;
 
   if (file != 0) {
     return -1;
   }
 
   for (; len > 0; --len) {
-    usart_serial_getchar(&stdio_uart_module, (uint8_t *)ptr);
-    ptr++;
-    nChars++;
+    usart_serial_getchar(&stdio_uart_module, (uint8_t *)ptr++);
+    read++;
   }
-  return nChars;
+  return read;
 }
 
 
