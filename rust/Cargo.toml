@@ -1,0 +1,13 @@
+[package]
+name = "rust"
+version = "0.1.0"
+authors = ["François Baldassari <hello@franc0is.com>"]
+
+[dependencies]
+rust-libcore = "*"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

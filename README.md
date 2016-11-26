@@ -1,6 +1,6 @@
-# Bootstrapping C applications on Cortex-M MCUs
+# Bootstrapping C (and rust) applications on Cortex-M MCUs
 
-Quick explorations of different ways to bootstrap a GNU C application on a cortex-M
+Quick explorations of different ways to bootstrap a GNU C (or rust) application on a cortex-M
 based MCU.
 
 While the concepts apply broadly, these examples run on an Arduino M0 Pro (they
@@ -31,6 +31,7 @@ The following scenarios are currently covered:
     application. The bootloader simply starts the applications
   * `bootload-reloc`: builds on `bootload` but runs the applications entirely in
     RAM. The bootloader thus needs to copy it over first.
+  * `rust`: barebones rust app
 
 More to come, and blog posts will follow.
 
@@ -52,3 +53,9 @@ More to come, and blog posts will follow.
 
 `make flash-<app-name>` flashes a specific app (it needs to have been built
 first)
+
+### Credits
+
+* https://github.com/cbiffle/minimal-embedded-rust/ - A minimal embedded rust
+  app on cortex-M MCU by @cbiffle
+

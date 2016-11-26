@@ -1,4 +1,5 @@
 PROJECTS := \
+		rust \
 		bootload-reloc \
 		reloc \
 		bootload \
