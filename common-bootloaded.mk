@@ -38,6 +38,7 @@ CC=arm-none-eabi-gcc
 LD=arm-none-eabi-ld
 OCPY=arm-none-eabi-objcopy
 ODUMP=arm-none-eabi-objdump
+SZ=arm-none-eabi-size
 OCD=arduino-openocd
 MKDIR=mkdir
 
@@ -54,6 +55,7 @@ CFLAGS += \
 	-fdata-sections
 
 LDFLAGS += \
+	-specs=nano.specs \
 	-Wl,--gc-sections \
 	-Wl,-Map=$(BUILD_DIR)/$(PROJECT).map
 
@@ -75,9 +77,11 @@ $(BUILD_DIR)/$(PROJECT).bin: $(BUILD_DIR)/$(PROJECT)-boot.bin $(BUILD_DIR)/$(PRO
 
 $(BUILD_DIR)/$(PROJECT)-app.bin: $(BUILD_DIR)/$(PROJECT)-app.elf
 	$(OCPY) $< $@ -O binary
+	$(SZ) $<
 
 $(BUILD_DIR)/$(PROJECT)-boot.bin: $(BUILD_DIR)/$(PROJECT)-boot.elf
 	$(OCPY) --pad-to=0x10000 --gap-fill=0xFF -O binary $< $@
+	$(SZ) $<
 
 $(BUILD_DIR)/$(PROJECT)-app.elf: $(SRCS_APP)
 	$(MKDIR) -p $(BUILD_DIR)

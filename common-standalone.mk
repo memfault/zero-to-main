@@ -35,6 +35,7 @@ CC=arm-none-eabi-gcc
 LD=arm-none-eabi-ld
 OCPY=arm-none-eabi-objcopy
 ODUMP=arm-none-eabi-objdump
+SZ=arm-none-eabi-size
 OCD=arduino-openocd
 MKDIR=mkdir
 
@@ -51,6 +52,7 @@ CFLAGS += \
 	-fdata-sections
 
 LDFLAGS += \
+	-specs=nano.specs \
 	-Wl,--gc-sections \
 	-Wl,-Map=$(BUILD_DIR)/$(PROJECT).map \
 	-T samd21g18a_flash.ld
@@ -67,6 +69,7 @@ all: $(BUILD_DIR)/$(PROJECT).bin
 
 $(BUILD_DIR)/$(PROJECT).bin: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).lst
 	$(OCPY) $< $@ -O binary
+	$(SZ) $<
 
 $(BUILD_DIR)/$(PROJECT).lst: $(BUILD_DIR)/$(PROJECT).elf
 	$(ODUMP) -D $^ > $@
