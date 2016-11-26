@@ -1,4 +1,5 @@
 PROJECTS := \
+		bootload \
 		with-libc \
 		minimal \
 		default

@@ -1,4 +1,4 @@
-PROJECT := with-libc
+PROJECT := bootload
 BUILD_DIR ?= build
 
 INCLUDES = \
@@ -10,8 +10,11 @@ INCLUDES = \
 SRCS = \
 	$(ASF_PATH)/sam0/drivers/sercom/usart/usart.c \
 	$(ASF_PATH)/sam0/drivers/sercom/sercom.c \
-	startup_samd21.c \
-	$(PROJECT).c
+	startup_samd21.c
 
-include ../common-standalone.mk
+SRCS_BOOT = $(PROJECT)-boot.c
+
+SRCS_APP = $(PROJECT)-app.c
+
+include ../common-bootloaded.mk
 

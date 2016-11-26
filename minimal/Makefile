@@ -7,5 +7,5 @@ SRCS = \
 	startup_samd21.c \
 	$(PROJECT).c
 
-include ../common.mk
+include ../common-standalone.mk
 
