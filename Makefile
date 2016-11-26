@@ -1,4 +1,5 @@
 PROJECTS := \
+		bootload-reloc \
 		reloc \
 		bootload \
 		with-libc \
