@@ -48,7 +48,7 @@ More to come, and blog posts will follow.
 
 `make <app-name>` builds a specific app. E.g. `make bootload-reloc`
 
-### FLashing
+### Flashing
 
-Elfs can be loaded via openocd + GDB; bins can be loaded directly with openocd
-(required for bootloaded examples)
+`make flash-<app-name>` flashes a specific app (it needs to have been built
+first)
