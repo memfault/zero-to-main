@@ -1,4 +1,5 @@
 PROJECTS := \
+		reloc \
 		bootload \
 		with-libc \
 		minimal \
