@@ -1,19 +1,14 @@
 OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
 OUTPUT_ARCH(arm)
 
-MEMORY
-{
-  rom      (rx)  : ORIGIN = 0x00010000, LENGTH = 0x00030000
-  ram      (rwx) : ORIGIN = 0x20000000, LENGTH = 0x00004000
-  eram      (rwx) : ORIGIN = 0x20004000, LENGTH = 0x00004000
-}
+INCLUDE memory_map.ld
 
-STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : DEFINED(__stack_size__) ? __stack_size__ : 0x1000;
+STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : DEFINED(__stack_size__) ? __stack_size__ : 0x2000;
 
 /* Section Definitions */
 SECTIONS
 {
-    .text : AT (ORIGIN(rom))
+    .text :
     {
         . = ALIGN(4);
         _stext = .;
@@ -21,18 +16,18 @@ SECTIONS
         *(.text .text.*)
         *(.rodata .rodata*)
         . = ALIGN(4);
-    } > eram
+    } > bootrom
 
     /* .ARM.exidx is sorted, so has to go in its own output section.  */
-    .ARM.exidx : AT (ORIGIN(rom) + SIZEOF(.text))
+    PROVIDE_HIDDEN (__exidx_start = .);
+    .ARM.exidx :
     {
-        PROVIDE_HIDDEN (__exidx_start = .);
-        *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-        . = ALIGN(4);
-        PROVIDE_HIDDEN (__exidx_end = .);
-    } > eram
+      *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+    } > bootrom
+    PROVIDE_HIDDEN (__exidx_end = .);
 
-    _etext = ORIGIN(rom) + SIZEOF(.text) + SIZEOF(.ARM.exidx);
+    . = ALIGN(4);
+    _etext = .;
 
     /* .bss section which is used for uninitialized data */
     .bss (NOLOAD) :

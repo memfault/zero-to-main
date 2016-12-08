@@ -59,8 +59,8 @@ LDFLAGS += \
 	-Wl,--gc-sections \
 	-Wl,-Map=$(BUILD_DIR)/$(PROJECT).map
 
-LDFLAGS_BOOT = $(LDFLAGS) -T samd21g18a_flash-boot.ld
-LDFLAGS_APP = $(LDFLAGS) -T samd21g18a_flash-app.ld
+LDFLAGS_BOOT = $(LDFLAGS) -T boot.ld
+LDFLAGS_APP = $(LDFLAGS) -T app.ld
 
 DEFINES += \
 	__SAMD21G18A__ \

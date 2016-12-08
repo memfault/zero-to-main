@@ -1,11 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
 OUTPUT_ARCH(arm)
 
-MEMORY
-{
-  rom      (rx)  : ORIGIN = 0x00000000, LENGTH = 0x00010000
-  ram      (rwx) : ORIGIN = 0x20000000, LENGTH = 0x00008000
-}
+INCLUDE memory_map.ld
 
 STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : DEFINED(__stack_size__) ? __stack_size__ : 0x2000;
 
@@ -20,14 +16,14 @@ SECTIONS
         *(.text .text.*)
         *(.rodata .rodata*)
         . = ALIGN(4);
-    } > rom
+    } > bootrom
 
     /* .ARM.exidx is sorted, so has to go in its own output section.  */
     PROVIDE_HIDDEN (__exidx_start = .);
     .ARM.exidx :
     {
       *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-    } > rom
+    } > bootrom
     PROVIDE_HIDDEN (__exidx_end = .);
 
     . = ALIGN(4);
