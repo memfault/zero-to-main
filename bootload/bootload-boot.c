@@ -8,6 +8,8 @@
 #include <port.h>
 #include <usart_serial.h>
 
+#include "memory_map.h"
+
 static struct usart_module stdio_uart_module;
 
 // LIBC SYSCALLS
@@ -123,7 +125,7 @@ int main() {
   printf("Bootloader!\n");
   serial_deinit();
 
-  DeviceVectors *app_vectors = (DeviceVectors *) 0x10000;
+  DeviceVectors *app_vectors = (DeviceVectors *) &__approm_start__;
   start_app(app_vectors->pfnReset_Handler, app_vectors->pvStack);
 
   // should never be reached

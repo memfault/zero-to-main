@@ -8,6 +8,8 @@
 #include <port.h>
 #include <usart_serial.h>
 
+#include "memory_map.h"
+
 static struct usart_module stdio_uart_module;
 
 // LIBC SYSCALLS
@@ -122,10 +124,11 @@ int main() {
   serial_init();
   printf("Bootloader!\n");
 
-  uint32_t *src = (uint32_t*) 0x10000; // start of app .text in ROM
-  uint32_t *dst = (uint32_t*) 0x20004000; // start of app .text in ERAM
+  uint32_t *src = (uint32_t*) &__approm_start__;
+  uint32_t *dst = (uint32_t*) &__eram_start__;
+  int size = (int) &__approm_size__;
   printf("Copying firmware from %p to %p\n", src, dst);
-  memcpy((uint8_t*) dst, (uint8_t*) src, 0x4000);
+  memcpy((uint8_t*) dst, (uint8_t*) src, size);
 
   DeviceVectors *app_vectors = (DeviceVectors *) dst;
   printf("Jumping to %p\n", app_vectors->pfnReset_Handler);
