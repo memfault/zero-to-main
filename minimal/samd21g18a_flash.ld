@@ -7,7 +7,7 @@ MEMORY
   ram      (rwx) : ORIGIN = 0x20000000, LENGTH = 0x00008000
 }
 
-STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : DEFINED(__stack_size__) ? __stack_size__ : 0x2000;
+STACK_SIZE = 0x2000;
 
 /* Section Definitions */
 SECTIONS

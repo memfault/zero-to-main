@@ -210,6 +210,9 @@ void Reset_Handler(void)
         /* Overwriting the default value of the NVMCTRL.CTRLB.MANW bit (errata reference 13134) */
         NVMCTRL->CTRLB.bit.MANW = 1;
 
+        /* Init libc */
+        __libc_init_array();
+
         /* Branch to main function */
         main();
 
