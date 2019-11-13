@@ -44,14 +44,14 @@ SECTIONS
         _ebss = . ;
     } > ram
 
-    .data : AT (_etext)
+    .data :
     {
         . = ALIGN(4);
         _sdata = .;
         *(.data .data.*);
         . = ALIGN(4);
         _edata = .;
-    } > ram
+    } > ram AT >rom
 
     /* stack section */
     .stack (NOLOAD):

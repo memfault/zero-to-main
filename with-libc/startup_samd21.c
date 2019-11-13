@@ -14,6 +14,8 @@ extern uint32_t _estack;
 int main(void);
 /** \endcond */
 
+void __libc_init_array(void);
+
 /* Default empty handler */
 void Dummy_Handler(void);
 
@@ -209,6 +211,12 @@ void Reset_Handler(void)
 
         /* Overwriting the default value of the NVMCTRL.CTRLB.MANW bit (errata reference 13134) */
         NVMCTRL->CTRLB.bit.MANW = 1;
+
+
+        /* Run constructors / initializers */
+#ifndef CUSTOM_LIBC
+        __libc_init_array();
+#endif
 
         /* Branch to main function */
         main();

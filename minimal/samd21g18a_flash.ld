@@ -1,6 +1,3 @@
-OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
-OUTPUT_ARCH(arm)
-
 MEMORY
 {
   rom      (rx)  : ORIGIN = 0x00000000, LENGTH = 0x00040000
@@ -14,34 +11,33 @@ SECTIONS
 {
     .text :
     {
-        . = ALIGN(4);
-        _stext = .;
         KEEP(*(.vectors .vectors.*))
-        *(.text .text.*)
-        *(.rodata .rodata*)
-        . = ALIGN(4);
+        *(.text.*)
+        *(.rodata.*)
         _etext = .;
+    } > rom
+
+    .gnu_build_id :
+    {
+        PROVIDE(g_gnu_build_id = .);
+        *(.note.gnu.build-id)
     } > rom
 
     /* .bss section which is used for uninitialized data */
     .bss (NOLOAD) :
     {
-        . = ALIGN(4);
         _sbss = . ;
         *(.bss .bss.*)
         *(COMMON)
-        . = ALIGN(4);
         _ebss = . ;
     } > ram
 
-    .data : AT (_etext)
+    .data :
     {
-        . = ALIGN(4);
         _sdata = .;
-        *(.data .data.*);
-        . = ALIGN(4);
+        *(.data*);
         _edata = .;
-    } > ram
+    } > ram AT >rom
 
     /* stack section */
     .stack (NOLOAD):

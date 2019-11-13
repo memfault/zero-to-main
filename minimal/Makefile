@@ -1,7 +1,7 @@
 PROJECT := minimal
 BUILD_DIR ?= build
 
-CFLAGS = -nostdlib
+CFLAGS += -nostdlib
 
 SRCS = \
 	startup_samd21.c \

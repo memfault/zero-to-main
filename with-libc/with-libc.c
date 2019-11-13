@@ -15,7 +15,7 @@ static struct usart_module stdio_uart_module;
 
 extern int _end;
 
-caddr_t _sbrk(int incr) {
+void *_sbrk(int incr) {
   static unsigned char *heap = NULL;
   unsigned char *prev_heap;
 
@@ -26,7 +26,7 @@ caddr_t _sbrk(int incr) {
 
   heap += incr;
 
-  return (caddr_t) prev_heap;
+  return prev_heap;
 }
 
 int _close(int file) {
@@ -95,7 +95,7 @@ int _read (int file, char * ptr, int len) {
 
 #define LED_0_PIN PIN_PA17
 
-static void serial_init(void) {
+static void __attribute__((constructor)) serial_init(void) {
   struct usart_config usart_conf;
 
   usart_get_config_defaults(&usart_conf);
@@ -118,7 +118,6 @@ static void set_output(const uint8_t pin) {
 }
 
 int main() {
-  serial_init();
   set_output(LED_0_PIN);
 
   printf("Hello, World!\n");

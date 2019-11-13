@@ -24,7 +24,7 @@ $(FLASH_TARGETS): $(OPENOCD_CFG)
 	$(OCD) -d2 -f $< -c "program {{build/$(PROJ)/$(PROJ).bin}} verify reset; shutdown"
 
 unlock: $(OPENOCD_CFG)
-	$(OCD) -d2 -f $< -c "init; targets; reset; halt; at91samd bootloader 0; reset; shutdown"
+	$(OCD) -d2 -f $< -c "init; halt; at91samd bootloader 0; reset; shutdown"
 
 all: $(PROJECTS)
 
