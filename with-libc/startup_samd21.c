@@ -214,7 +214,9 @@ void Reset_Handler(void)
 
 
         /* Run constructors / initializers */
-        //__libc_init_array();
+#ifndef CUSTOM_LIBC
+        __libc_init_array();
+#endif
 
         /* Branch to main function */
         main();

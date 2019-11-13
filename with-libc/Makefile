@@ -1,8 +1,11 @@
 PROJECT := with-libc
 BUILD_DIR ?= build
 
-CFLAGS += -nostdlib
-LDFLAGS += -L../lib/embeddedartistry_libc -lc
+#
+# Uncomment for non-newlib libc
+#
+#CFLAGS += -nostdlib -DCUSTOM_LIBC
+#LDFLAGS += -L../lib/embeddedartistry_libc -lc
 
 INCLUDES = \
 	$(ASF_PATH)/sam0/drivers/sercom \
