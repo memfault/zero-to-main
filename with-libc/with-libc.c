@@ -118,11 +118,9 @@ static void set_output(const uint8_t pin) {
 }
 
 int main() {
-  //serial_init();
   set_output(LED_0_PIN);
 
-  memcpy(NULL, NULL, 0);
-  //printf("Hello, World!\n");
+  printf("Hello, World!\n");
   while (true) {
     port_pin_toggle_output_level(LED_0_PIN);
     for (int i = 0; i < 100000; ++i) {}
