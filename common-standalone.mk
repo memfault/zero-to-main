@@ -99,7 +99,7 @@ $(BUILD_DIR)/$(PROJECT).lst: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)
 
 $(BUILD_DIR)/$(PROJECT).elf: $(OBJS)
 	@echo "Linking $@"
-	$(NO_ECHO)$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+	$(NO_ECHO)$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
 
 
 .PHONY: clean
