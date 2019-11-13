@@ -8,7 +8,7 @@ STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : DEFINED(__stack_size__) ? __stac
 /* Section Definitions */
 SECTIONS
 {
-    .text : AT (ORIGIN(approm))
+    .text :
     {
         . = ALIGN(4);
         _stext = .;
@@ -16,7 +16,7 @@ SECTIONS
         *(.text .text.*)
         *(.rodata .rodata*)
         . = ALIGN(4);
-    } > eram
+    } > eram AT > approm
 
     /* .ARM.exidx is sorted, so has to go in its own output section.  */
     .ARM.exidx : AT (ORIGIN(approm) + SIZEOF(.text))

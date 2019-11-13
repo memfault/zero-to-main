@@ -1,4 +1,11 @@
-ASF_PATH = ../xdk-asf-3.32.0
+ASF_PATH := ../xdk-asf-3.32.0
+REPO_ROOT := $(shell git rev-parse --show-toplevel)
+
+ifdef DEBUG
+	NO_ECHO :=
+else
+	NO_ECHO := @
+endif
 
 SRCS += \
 	$(ASF_PATH)/common/utils/interrupt/interrupt_sam_nvic.c \
@@ -46,6 +53,7 @@ CFLAGS += \
 	-Werror \
 	-std=c11 \
 	-O0 \
+	-fdebug-prefix-map=$(REPO_ROOT)= \
 	-g \
 	-ffreestanding \
 	-ffunction-sections \
@@ -54,6 +62,7 @@ CFLAGS += \
 LDFLAGS += \
 	-specs=nano.specs \
 	-Wl,--gc-sections \
+	-Wl,--print-memory-usage \
 	-Wl,-Map=$(BUILD_DIR)/$(PROJECT).map \
 	-T samd21g18a_flash.ld
 
@@ -64,19 +73,33 @@ DEFINES += \
 CFLAGS += $(foreach i,$(INCLUDES),-I$(i))
 CFLAGS += $(foreach d,$(DEFINES),-D$(d))
 
+OBJ_DIR = $(BUILD_DIR)/objs/a/b/c
+OBJS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))
+
 .PHONY: all
 all: $(BUILD_DIR)/$(PROJECT).bin
+
+$(BUILD_DIR):
+	$(NO_ECHO)$(MKDIR) -p $(BUILD_DIR)
+
+$(OBJ_DIR):
+	$(NO_ECHO)$(MKDIR) -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.c $(OBJ_DIR)
+	@echo "Compiling $<"
+	$(NO_ECHO)$(MKDIR) -p $(dir $@)
+	$(NO_ECHO)$(CC) -c -o $@ $< $(CFLAGS)
 
 $(BUILD_DIR)/$(PROJECT).bin: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).lst
 	$(OCPY) $< $@ -O binary
 	$(SZ) $<
 
-$(BUILD_DIR)/$(PROJECT).lst: $(BUILD_DIR)/$(PROJECT).elf
-	$(ODUMP) -D $^ > $@
+$(BUILD_DIR)/$(PROJECT).lst: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)
+	$(ODUMP) -D $< > $@
 
-$(BUILD_DIR)/$(PROJECT).elf: $(SRCS)
-	$(MKDIR) -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+$(BUILD_DIR)/$(PROJECT).elf: $(OBJS)
+	@echo "Linking $@"
+	$(NO_ECHO)$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 
 
 .PHONY: clean

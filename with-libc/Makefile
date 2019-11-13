@@ -1,6 +1,9 @@
 PROJECT := with-libc
 BUILD_DIR ?= build
 
+CFLAGS += -nostdlib
+LDFLAGS += -L../lib/embeddedartistry_libc -lc
+
 INCLUDES = \
 	$(ASF_PATH)/sam0/drivers/sercom \
 	$(ASF_PATH)/sam0/drivers/sercom/usart \
